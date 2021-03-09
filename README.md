@@ -66,7 +66,7 @@ Initially I started with the LeNet architecture. Later, to improve model perform
 | dense_3 (Dense)                     |   (None, 120)             |  46200              |
 | dense_4 (Dense)                     |   (None, 84)              |  10164              |     
 | dense_5 (Dense)                     |   (None, 43)              |  3655               |
-|:-----------------------------------:|:-------------------------:|:-------------------:| 
+
 
 * Total params: 66,371
 * Trainable params: 66,371
@@ -74,12 +74,12 @@ Initially I started with the LeNet architecture. Later, to improve model perform
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-I used 'Adam Optimizer' for model training and used the following hyperparameters - 
+I used `Adam Optimizer` for model training and used the following hyperparameters - 
 * Learning rate = 0.0006
 * Epochs = 12
 * Batch size = 64
 
-Since I'd passed the labels as Class Ids and not as one hot encoded vectors, I used the loss function 'SparseCategoricalCrossentropy' & the Validation metric 'SparseCategoricalAccuracy'.
+Since I'd passed the labels as Class Ids and not as one hot encoded vectors, I used the loss function `SparseCategoricalCrossentropy` & the Validation metric `SparseCategoricalAccuracy`.
 
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
