@@ -133,7 +133,7 @@ The code for making predictions on my final model is located in the 14th & 15th 
 
 ![alt text][image5]
 
-For all the images, the model is very confident of the predictions. Even on the wrong prediction, the model is making a very confident mistake, although the actual label has 2nd highest probability. But, the fact that the model is making very confident predictions right or wrong, shows that the model has become very rigid and might not generalize very well on OOD image data. This might have happened because I didn't employ the desired level of data preprocessing / augmentation on the training data. For the first image with label Right of way, the model predictions are:
+For all the images, the model is very confident of the predictions. Even on the wrong prediction, the model is making a very confident mistake, although the actual label has 2nd highest probability. But, the fact that the model is making very confident predictions right or wrong, shows that the model has become very rigid and might not generalize very well on OOD image data. This might have happened because I didn't employ the desired level of data preprocessing / augmentation on the training data. For the first image with label `Right of way`, the model predictions are:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
