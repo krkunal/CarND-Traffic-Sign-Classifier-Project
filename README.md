@@ -25,10 +25,10 @@ The goals / steps of this project are the following:
 I used the numpy functions to calculate summary statistics of the traffic
 signs data set:
 
-* The size of training set is 347999
+* The size of training set is 34799
 * The size of the validation set is 4410
 * The size of test set is 12630
-* The shape of a traffic sign image is (32,32,3)
+* The shape of a traffic sign image is (32, 32, 3)
 * The number of unique classes/labels in the data set is 43
 
 #### 2. Include an exploratory visualization of the dataset.
@@ -50,39 +50,27 @@ For preprocessing, the only step I took is normalization of the images so that t
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-Initially I started with the LeNet architecture. Later, to improve model performance, I added one additional Convolution layer and to Dropout layers. I've used TensorFlow 2.3.2 runtime. The model summary is:
+Initially I started with the LeNet architecture. Later, to improve model performance, I added one additional Convolution layer and two Dropout layers. I've used TensorFlow 2.3.2 runtime. The model summary is:
 
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_2 (InputLayer)         [(None, 32, 32, 3)]       0         
-_________________________________________________________________
-conv2d_3 (Conv2D)            (None, 28, 28, 6)         456       
-_________________________________________________________________
-max_pooling2d_2 (MaxPooling2 (None, 14, 14, 6)         0         
-_________________________________________________________________
-conv2d_4 (Conv2D)            (None, 10, 10, 16)        2416      
-_________________________________________________________________
-dropout_2 (Dropout)          (None, 10, 10, 16)        0         
-_________________________________________________________________
-conv2d_5 (Conv2D)            (None, 8, 8, 24)          3480      
-_________________________________________________________________
-dropout_3 (Dropout)          (None, 8, 8, 24)          0         
-_________________________________________________________________
-max_pooling2d_3 (MaxPooling2 (None, 4, 4, 24)          0         
-_________________________________________________________________
-flatten_1 (Flatten)          (None, 384)               0         
-_________________________________________________________________
-dense_3 (Dense)              (None, 120)               46200     
-_________________________________________________________________
-dense_4 (Dense)              (None, 84)                10164     
-_________________________________________________________________
-dense_5 (Dense)              (None, 43)                3655      
-=================================================================
-Total params: 66,371
-Trainable params: 66,371
-Non-trainable params: 0
-_________________________________________________________________
+| Layer (type)	                      |    Output Shape           |  Param #			| 
+|:-----------------------------------:|:-------------------------:|:-------------------:| 
+| input_2 (InputLayer)                |   [(None, 32, 32, 3)]     |  0                  |
+| conv2d_3 (Conv2D)                   |   (None, 28, 28, 6)       |  456                |
+| max_pooling2d_2 (MaxPooling2D)      |   (None, 14, 14, 6)       |  0                  |
+| conv2d_4 (Conv2D)                   |   (None, 10, 10, 16)      |  2416               |
+| dropout_2 (Dropout)                 |   (None, 10, 10, 16)      |  0                  |
+| conv2d_5 (Conv2D)                   |   (None, 8, 8, 24)        |  3480               |
+| dropout_3 (Dropout)                 |   (None, 8, 8, 24)        |  0                  |
+| max_pooling2d_3 (MaxPooling2D)      |   (None, 4, 4, 24)        |  0                  |
+| flatten_1 (Flatten)                 |   (None, 384)             |  0                  |
+| dense_3 (Dense)                     |   (None, 120)             |  46200              |
+| dense_4 (Dense)                     |   (None, 84)              |  10164              |     
+| dense_5 (Dense)                     |   (None, 43)              |  3655               |
+|:-----------------------------------:|:-------------------------:|:-------------------:| 
+
+* Total params: 66,371
+* Trainable params: 66,371
+* Non-trainable params: 0
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
@@ -90,6 +78,7 @@ I used 'Adam Optimizer' for model training and used the following hyperparameter
 * Learning rate = 0.0006
 * Epochs = 12
 * Batch size = 64
+
 Since I'd passed the labels as Class Ids and not as one hot encoded vectors, I used the loss function 'SparseCategoricalCrossentropy' & the Validation metric 'SparseCategoricalAccuracy'.
 
 
@@ -142,7 +131,7 @@ The model was able to correctly guess 8 of the 9 traffic signs, which gives an a
 
 The code for making predictions on my final model is located in the 14th & 15th cells of the Ipython notebook. The top five predictions for all the nine image is:
 
-![alt text][image4]
+![alt text][image5]
 
 For all the images, the model is very confident of the predictions. Even on the wrong prediction, the model is making a very confident mistake, although the actual label has 2nd highest probability. But, the fact that the model is making very confident predictions right or wrong, shows that the model has become very rigid and might not generalize very well on OOD image data. This might have happened because I didn't employ the desired level of data preprocessing / augmentation on the training data. For the first image with label Right of way, the model predictions are:
 
